@@ -18,24 +18,23 @@ public class ProcuraLivro {
 
     Livraria livraria = new Livraria();
     List<Livro> result = new ArrayList<>();
-
-    @Given(".+book with the title '(.+)', written by '(.+)', published in (.+)")
+    @Given(".+livro de titulo '(.+)', escrito por '(.+)', publicado em(.+)")
     public void addNewlivro(final String title, final String author, @Format("dd MMMMM yyyy") final Date published) {
         Livro book = new Livro(title, author, published);
         livraria.addLivro(book);
     }
 
-    @When("^the customer searches for books published between (\\d+) and (\\d+)$")
+    @When("^o cliente procura por livros entre (\\d+) and (\\d+)$")
     public void setSearchParameters(@Format("yyyy") final Date from, @Format("yyyy") final Date to) {
         result = livraria.findLivros(from, to);
     }
 
-    @Then("(\\d+) books should have been found$")
+    @Then("(\\d+) livros devem ser encontrados$")
     public void verifyAmountOflivrosFound(final int booksFound) {
         assertThat(result.size(), equalTo(booksFound));
     }
 
-    @Then("livro (\\d+) should have the title '(.+)'$")
+    @Then("Livro (\\d+) deve ter o titulo '(.+)'$")
     public void verifylivroAtPosition(final int position, final String title) {
         assertThat(result.get(position - 1).getTitulo(), equalTo(title));
     }
