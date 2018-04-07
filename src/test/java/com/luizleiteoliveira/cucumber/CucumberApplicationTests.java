@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/java/com/hotmart/cucumber/resources")
+@CucumberOptions(features = "src/test/java/com/luizleiteoliveira/cucumber/resources/")
 public class CucumberApplicationTests {
 
 }
